@@ -1,10 +1,10 @@
 # depslib dependency file v1.0
-1629711215 source:c:\users\aless\desktop\noteproject\main.cpp
+1630338673 source:c:\users\aless\desktop\noteproject\main.cpp
 	<iostream>
 	"Collection.h"
 	"Note.h"
 
-1629635790 c:\users\aless\desktop\noteproject\collection.h
+1630338931 c:\users\aless\desktop\noteproject\collection.h
 	"Observer.h"
 	"Subject.h"
 	"Note.h"
@@ -14,21 +14,21 @@
 
 1629546465 c:\users\aless\desktop\noteproject\observer.h
 
-1629711448 c:\users\aless\desktop\noteproject\subject.h
+1630232917 c:\users\aless\desktop\noteproject\subject.h
 	<vector>
 	<iostream>
 	<list>
 	"Observer.h"
 
-1629636158 c:\users\aless\desktop\noteproject\note.h
+1630338931 c:\users\aless\desktop\noteproject\note.h
 	<iostream>
 	"Subject.h"
 	"Collection.h"
 
-1629711215 source:c:\users\aless\desktop\noteproject\collection.cpp
+1630333741 source:c:\users\aless\desktop\noteproject\collection.cpp
 	"Collection.h"
 
-1629552887 source:c:\users\aless\desktop\noteproject\subject.cpp
+1630232917 source:c:\users\aless\desktop\noteproject\subject.cpp
 	"Subject.h"
 
 1629711215 source:c:\users\aless\desktop\noteproject\note.cpp

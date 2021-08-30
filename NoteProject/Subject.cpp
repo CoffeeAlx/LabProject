@@ -7,16 +7,16 @@ void Subject::Sub(Observer *observer)
     ObsList.push_back(observer);
 }
 
-void Subject::Unsub(const int index)
+void Subject::Unsub(Observer *observer)
 {
-    ObsList.erase( ObsList.begin() + index );
+    ObsList.remove(observer);
 }
 
 void Subject::notify()
 {
-    for(unsigned int i=0; i<ObsList.size(); i++)
+    for(auto i:ObsList)
     {
-        ObsList.at(i)->update(this);
+        i->update(this);
     }
 }
 

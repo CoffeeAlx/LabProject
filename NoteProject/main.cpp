@@ -6,33 +6,35 @@ using std::cout;
 using std::endl;
 using std::cin;
 
-int a = 0;          //Keeps the number of notes
-int b = 0;
-
 int main()
-{   int choice;
-    Note note;
-    Collection collection;
+{
+    int a = 0;          //Keeps the number of notes in the "Others" collection
+    int b = 0;          //Keeps the number of notes in the "Others" collection
+    int choice;
+    Note* nt=new Note();
+    Collection others;
     Collection important;
 
     do{
-     cout<< "0. Create a new note"<<endl;
-     cout<< "1. Print your notes"<<endl;
-     cout<< "2. Edit a note"<<endl;
-     cout<< "3. Delete a note"<<endl;
-     cout<< "4. Exit"<<endl;
+     cout<<"########################"<<endl;
+     cout<<"# 0. Create a new note #"<<endl;
+     cout<<"# 1. Print your notes  #"<<endl;
+     cout<<"# 2. Edit a note       #"<<endl;
+     cout<<"# 3. Delete a note     #"<<endl;
+     cout<<"# 4. Exit              #"<<endl;
+     cout<<"########################"<<endl;
      cin>>choice;
 
         switch(choice)
         {
         case 0:
-        {       note.InsertNote(collection,important,a,b);
+        {       nt->InsertNote(others,important,a,b);
         }break;
         case 1:
         {       cout<<"These are the notes in your 'Important' collection"<<endl;
                 important.Print();
                 cout<<"These are the notes in your 'Others' collection"<<endl;
-                collection.Print();
+                others.Print();
         }break;
         case 2:
         {       cout<<"Where is the note you want to edit?"<<endl;
@@ -40,7 +42,7 @@ int main()
                 cin>>choice;
                 if(choice==0)
                 {
-                    collection.EditNote();
+                    others.EditNote();
                 }
                 else
                 {
@@ -54,17 +56,38 @@ int main()
                 cin>>choice;
                 if(choice==0)
                 {   b--;
-                    note.DeleteNote(collection, b);
+                    nt->DeleteNote(others, b);
                 }
                 else
                 {   a--;
-                    note.DeleteNote(important, a);
+                    nt->DeleteNote(important, a);
                 }
         }break;
         case 4:
-        {return 0;}
+        {        delete nt;
+                 return 0;
+        }
         }
     }while(choice!=4);
+
+    /*
+    //Unit Testing
+    Note* nt=new Note();
+    Collection collection;
+    Collection important;
+
+    nt->InsertNote(collection,important,a,b);
+    //Inserendola in collection
+    collection.EditNote();
+    //Editandola
+    collection.EditNote();
+    //Cancellandola
+    b--;
+    nt->DeleteNote(collection, b);
+
+    delete nt;
+    return 0;
+    */
 
 return 0;
 

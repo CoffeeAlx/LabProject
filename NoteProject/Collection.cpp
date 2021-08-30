@@ -21,15 +21,6 @@ vector <Note> Collection::getAllNotes()
 
 //Other Methods
 
-void Collection::DeleteNote()
-{
-    int a;
-    cout<<"Input the number of the note you want to delete"<<endl;
-    cin>>a;
-    AllNotes.erase(AllNotes.begin() + a);
-    cout<<"Note deleted succesfully"<<endl;
-}
-
 void Collection::update(Subject *sbj)
 {
     Count = sbj->getCount();

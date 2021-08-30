@@ -1,13 +1,16 @@
 #ifndef COLLECTION_H
 #define COLLECTION_H
+
 #include "Observer.h"
 #include "Subject.h"
 #include "Note.h"
+
 #include <iostream>
 #include <string>
 #include <vector>
 
 using std::vector;
+
 class Note;
 
 class Collection : public Observer
@@ -29,7 +32,6 @@ public:
     void AddNote(Note &NewNote);
     void Print();
     void EditNote();
-    void DeleteNote();
     void InsertNote(int NotesNumber);
     void RemoveNote(int index);
 

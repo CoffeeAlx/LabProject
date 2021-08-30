@@ -9,11 +9,11 @@
 class Subject
 {
 private:
-    std::vector<Observer*> ObsList;
+    std::list<Observer*> ObsList;
 public:
     virtual ~Subject();
     void Sub(Observer *observer);
-    void Unsub(const int index);
+    void Unsub(Observer *observer);
     void notify();
     virtual int getCount() = 0;
     virtual void setCount(int s) = 0;

@@ -1,10 +1,13 @@
 #ifndef NOTE_H
 #define NOTE_H
+
 #include <iostream>
+
 #include "Subject.h"
 #include "Collection.h"
 
 class Collection;
+
 using std::string;
 using std::cout;
 using std::endl;
