@@ -81,7 +81,7 @@ void Note::InsertNote(Collection &collection, Collection &important, int &a, int
 void Note::DeleteNote(Collection &collezione, int Num)
 {
     int index;
-    cout<<"Input the number of the note you want to delete (Beware, the firs note is labeled with a 0)"<<endl;
+    cout<<"Input the number of the note you want to delete (Beware, the first note is labeled with a 0)"<<endl;
     cin>>index;
     collezione.RemoveNote(index);
     cout<<"Note deleted succesfully"<<endl;
@@ -92,3 +92,24 @@ void Note::DeleteNote(Collection &collezione, int Num)
     cout << "Notes in the collection: " << collezione.getCount() <<endl;
     delete subject;
 }
+
+
+//Observer Methods
+void Note::Sub(Observer *observer)
+{
+    ObsList.push_back(observer);
+}
+
+void Note::Unsub(Observer *observer)
+{
+    ObsList.remove(observer);
+}
+
+void Note::notify()
+{
+    for(auto i:ObsList)
+    {
+        i->update(this);
+    }
+}
+

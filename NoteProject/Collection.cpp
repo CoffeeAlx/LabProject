@@ -21,12 +21,6 @@ vector <Note> Collection::getAllNotes()
 
 //Other Methods
 
-void Collection::update(Subject *sbj)
-{
-    Count = sbj->getCount();
-    cout << "Notes number updated." <<endl;
-}
-
 void Collection::AddNote(Note &NewNote)
 {
   AllNotes.push_back(NewNote);
@@ -38,6 +32,7 @@ void Collection::RemoveNote(int index)
   AllNotes.erase(AllNotes.begin() + index);
 
 }
+
 void Collection::Print()
 {
     for (unsigned int i = 0; i < AllNotes.size(); i++)
@@ -91,7 +86,13 @@ void Collection::EditNote()
     }
 }
 
+//Observer Methods
 
+void Collection::update(Subject *sbj)
+{
+    Count = sbj->getCount();
+    cout << "Notes number updated." <<endl;
+}
 
 
 

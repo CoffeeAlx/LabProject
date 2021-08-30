@@ -4,7 +4,7 @@
 	"Collection.h"
 	"Note.h"
 
-1630338931 c:\users\aless\desktop\noteproject\collection.h
+1630340404 c:\users\aless\desktop\noteproject\collection.h
 	"Observer.h"
 	"Subject.h"
 	"Note.h"
@@ -14,13 +14,13 @@
 
 1629546465 c:\users\aless\desktop\noteproject\observer.h
 
-1630232917 c:\users\aless\desktop\noteproject\subject.h
+1630340327 c:\users\aless\desktop\noteproject\subject.h
 	<vector>
 	<iostream>
 	<list>
 	"Observer.h"
 
-1630338931 c:\users\aless\desktop\noteproject\note.h
+1630340404 c:\users\aless\desktop\noteproject\note.h
 	<iostream>
 	"Subject.h"
 	"Collection.h"
@@ -28,9 +28,9 @@
 1630333741 source:c:\users\aless\desktop\noteproject\collection.cpp
 	"Collection.h"
 
-1630232917 source:c:\users\aless\desktop\noteproject\subject.cpp
+1630339981 source:c:\users\aless\desktop\noteproject\subject.cpp
 	"Subject.h"
 
-1629711215 source:c:\users\aless\desktop\noteproject\note.cpp
+1630339981 source:c:\users\aless\desktop\noteproject\note.cpp
 	"Note.h"
 

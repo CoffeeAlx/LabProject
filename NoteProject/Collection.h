@@ -28,12 +28,14 @@ public:
     vector <Note> getAllNotes();
 
     //Other Methods
-    void update( Subject *sbj );
     void AddNote(Note &NewNote);
     void Print();
     void EditNote();
     void InsertNote(int NotesNumber);
     void RemoveNote(int index);
+
+    //Observer Methods
+    void update( Subject *sbj );
 
 private:
     int Count;

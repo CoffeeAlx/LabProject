@@ -34,6 +34,11 @@ public:
     void InsertNote(Collection &collection, Collection &important, int &a, int &b);
     void DeleteNote(Collection &collezione, int Num);
 
+    //Observer Methods
+    void Sub(Observer *observer);
+    void Unsub(Observer *observer);
+    void notify();
+
 private:
     int state;
     string text;

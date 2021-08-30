@@ -1,5 +1,6 @@
 #ifndef SUBJECT_H
 #define SUBJECT_H
+
 #include <vector>
 #include <iostream>
 #include <list>
@@ -8,13 +9,12 @@
 
 class Subject
 {
-private:
-    std::list<Observer*> ObsList;
 public:
+    std::list<Observer*> ObsList;
     virtual ~Subject();
-    void Sub(Observer *observer);
-    void Unsub(Observer *observer);
-    void notify();
+    virtual void Sub(Observer *observer)=0;
+    virtual void Unsub(Observer *observer)=0;
+    virtual void notify()=0;
     virtual int getCount() = 0;
     virtual void setCount(int s) = 0;
 };
