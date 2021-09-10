@@ -12,7 +12,7 @@ Collection::Collection()
     cout<<"Collection created succesfully"<<endl;
 }
 
-Collection::Collection(string name)
+Collection::Collection(const string &name)
 {
     this->name = name;
 }
@@ -24,7 +24,7 @@ Collection::~Collection(){}
 string Collection::getName()const
 {return name;}
 
-void Collection::setName(string name)
+void Collection::setName(const string &name)
 {this->name = name;}
 
 //Methods
@@ -49,7 +49,7 @@ bool Collection::Add(Note &note)
 
 }
 
-void Collection::PutInto(vector <Note> &allnotes, vector <Collection> &allcollections)
+void Collection::PutInto( vector <Note> &allnotes, vector <Collection> &allcollections)
 {
     string temp;
     bool found = false;
@@ -105,8 +105,18 @@ void Collection::PutInto(vector <Note> &allnotes, vector <Collection> &allcollec
     }
 }
 
-void Collection::PrintNotes()
+void Collection::PrintNotes() const
 {
+    int sum=0;
+    for (unsigned int i = 0; i < collection.size(); i++)
+    {
+        if(collection[i].getEditable()==1)
+        sum++;
+    }
+
+    cout <<"There are " <<collection.size()<< " notes in this collection"<<endl;
+    cout <<"Of these, the modifiable one(s) are(is) "<< sum <<endl;
+
     for (unsigned int i = 0; i < collection.size(); i++)
     {
     cout <<"Title:  "<< collection[i].getTitle()<<endl;
@@ -115,9 +125,10 @@ void Collection::PrintNotes()
     }
 }
 
-void Collection::Print(vector <Note> &allnotes, vector <Collection> &allcollections)
+void Collection::Print(const vector <Note> &allnotes,const vector <Collection> &allcollections)
 {
-    cout<<"Notes that are not into a collection: "<<endl;
+    cout<<"There are " << allnotes.size() <<" notes that are not into a collection"<<endl;
+
     for (unsigned int i = 0; i < allnotes.size(); i++)
     {
     cout <<"Title:  "<< allnotes[i].getTitle()<<endl;
@@ -127,13 +138,13 @@ void Collection::Print(vector <Note> &allnotes, vector <Collection> &allcollecti
 
     for(unsigned int i = 0; i < allcollections.size(); i++)
     {
-    cout<<"Notes in the collection named: " <<allcollections[i].getName()<<endl;
+    cout<<"Collection: " <<allcollections[i].getName()<<endl;
     allcollections[i].PrintNotes();
     }
 
 }
 
-void Collection::EditNote(string title)
+void Collection::EditNote(const string &title)
 {
     string text;
     for(unsigned int i=0; i<collection.size(); i++)
@@ -185,7 +196,7 @@ void Collection::Edit(vector <Note> &allnotes, vector <Collection> &allcollectio
         }
 }
 
-void Collection::RemoveNote(string title)
+void Collection::RemoveNote(const string &title)
 {
     for(unsigned int i=0; i<collection.size(); i++)
     {

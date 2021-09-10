@@ -17,25 +17,25 @@ public:
 
     //C'tor & D'tor
     Collection();
-    Collection(string name);
+    explicit Collection(const string &name);
     virtual ~Collection();
 
     //Getter and Setter
-    void setName(string name);
+    void setName(const string &name);
     string getName()const;
 
     //Methods
-    void PutInto(vector <Note> &allnotes, vector <Collection> &allcollections);
+    void PutInto( vector <Note> &allnotes,  vector <Collection> &allcollections);
     bool Add(Note &note);
 
-    void Print(vector <Note> &allnotes,vector <Collection> &allcollections);
-    void PrintNotes();
+    void Print(const vector <Note> &allnotes,const vector <Collection> &allcollections);
+    void PrintNotes() const;
 
-    void Edit(vector <Note> &allnotes, vector <Collection> &allcollections);
-    void EditNote(string title);
+    void Edit( vector <Note> &allnotes,  vector <Collection> &allcollections);
+    void EditNote(const string &title);
 
-    void Remove(vector <Note> &allnotes, vector <Collection> &allcollections);
-    void RemoveNote(string title);
+    void Remove( vector <Note> &allnotes, vector <Collection> &allcollections);
+    void RemoveNote(const string &title);
 
     //Observer Methods
     void ChangeEditable(bool editable);

@@ -5,13 +5,13 @@
 using namespace std;
 
 //Getter & Setter
-void Note::setText(string text)
+void Note::setText(const string &text)
 {this->text = text;}
 
-void Note::setTitle(string title)
+void Note::setTitle(const string &title)
 {this->title = title;}
 
-void Note::setEditable(bool editable)
+void Note::setEditable(const bool &editable)
 {this->editable = editable;}
 
 string Note::getText()const
