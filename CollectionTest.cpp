@@ -1,22 +1,20 @@
 #include "gtest/gtest.h"
-#include "gmock/gmock.h"
 #include "../Collection.h"
-
 
 class CollectionTest : public ::testing::Test {
 
 protected:
     virtual void SetUp() {
-        c.setName("Random");
+        c.SetName("Random");
     }
 
     Collection c;
-};
+}
 
 
-TEST_F(CollectionTest, Constructor) {
+TEST_F(CollectionTest, Getter) {
 
     Collection c;
-    ASSERT_EQ("Random", c.getName());
+    ASSERT_EQ("Random", c.GetName())
 }
 

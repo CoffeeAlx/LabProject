@@ -1,5 +1,4 @@
 #include "Collection.h"
-
 using namespace std;
 
 //C'tor & D'tor
@@ -21,10 +20,10 @@ Collection::~Collection(){}
 
 //Getter and Setter
 
-string Collection::getName()const
+string Collection::GetName()const
 {return name;}
 
-void Collection::setName(const string &name)
+void Collection::SetName(const string &name)
 {this->name = name;}
 
 //Methods
@@ -37,13 +36,13 @@ bool Collection::Add(Note &note)
     cin>>choice;
     if(choice==1)
     {
-        note.setEditable(1);
+        note.SetEditable(true);
         collection.push_back(note);
-        return 1;
+        return true;
     }
     else
     {   collection.push_back(note);
-        return 0;
+        return false;
     }
 
 
@@ -60,11 +59,11 @@ void Collection::PutInto( vector <Note> &allnotes, vector <Collection> &allcolle
     cin>>temp;
     for(j=0; j<allnotes.size(); j++)
     {
-        if(allnotes[j].getTitle()==temp)
+        if(allnotes[j].GetTitle()==temp)
         {
-        cout<<"Found"<<endl;
-        found=true;
-        break;
+            cout<<"Found"<<endl;
+            found=true;
+            break;
         }
     }
 
@@ -80,11 +79,11 @@ void Collection::PutInto( vector <Note> &allnotes, vector <Collection> &allcolle
         cin>>temp;
         for(i=0; i<allcollections.size(); i++)
         {
-            if(allcollections[i].getName()==temp)
+            if(allcollections[i].GetName()==temp)
             {
-            cout<<"Found"<<endl;
-            found=true;
-            break;
+                cout<<"Found"<<endl;
+                found=true;
+                break;
             }
         }
     }
@@ -110,8 +109,8 @@ void Collection::PrintNotes() const
     int sum=0;
     for (unsigned int i = 0; i < collection.size(); i++)
     {
-        if(collection[i].getEditable()==1)
-        sum++;
+        if(collection[i].GetEditable()==1)
+            sum++;
     }
 
     cout <<"There are " <<collection.size()<< " notes in this collection"<<endl;
@@ -119,9 +118,9 @@ void Collection::PrintNotes() const
 
     for (unsigned int i = 0; i < collection.size(); i++)
     {
-    cout <<"Title:  "<< collection[i].getTitle()<<endl;
-    cout <<"Text:   "<< collection[i].getText()<<endl;
-    cout <<"Editable:   "<< collection[i].getEditable()<<endl;
+        cout <<"Title:  "<< collection[i].GetTitle()<<endl;
+        cout <<"Text:   "<< collection[i].GetText()<<endl;
+        cout <<"Editable:   "<< collection[i].GetEditable()<<endl;
     }
 }
 
@@ -131,15 +130,15 @@ void Collection::Print(const vector <Note> &allnotes,const vector <Collection> &
 
     for (unsigned int i = 0; i < allnotes.size(); i++)
     {
-    cout <<"Title:  "<< allnotes[i].getTitle()<<endl;
-    cout <<"Text:   "<< allnotes[i].getText()<<endl;
-     cout <<"Editable:  "<< allnotes[i].getEditable()<<endl;
+        cout <<"Title:  "<< allnotes[i].GetTitle()<<endl;
+        cout <<"Text:   "<< allnotes[i].GetText()<<endl;
+        cout <<"Editable:  "<< allnotes[i].GetEditable()<<endl;
     }
 
     for(unsigned int i = 0; i < allcollections.size(); i++)
     {
-    cout<<"Collection: " <<allcollections[i].getName()<<endl;
-    allcollections[i].PrintNotes();
+        cout<<"Collection: " <<allcollections[i].GetName()<<endl;
+        allcollections[i].PrintNotes();
     }
 
 }
@@ -149,9 +148,9 @@ void Collection::EditNote(const string &title)
     string text;
     for(unsigned int i=0; i<collection.size(); i++)
     {
-        if(collection[i].getTitle()==title)
+        if(collection[i].GetTitle()==title)
         {
-            if(collection[i].getEditable()==1)
+            if(collection[i].GetEditable())
             {
                 cout<<"You can't edit this note"<<endl;
                 return;
@@ -162,11 +161,11 @@ void Collection::EditNote(const string &title)
                 cout<<"Type in your note"<<endl;
                 cin.ignore();
                 std::getline(cin,text);
-                collection[i].setText(text);
+                collection[i].SetText(text);
                 cout <<"Note edited succesfully"<<endl;
                 return;
-                }
             }
+        }
     }
 }
 
@@ -176,31 +175,31 @@ void Collection::Edit(vector <Note> &allnotes, vector <Collection> &allcollectio
     cout<<"Type in the title of the note you are looking for"<<endl;
     cin>>title;
 
-        for(unsigned int i=0; i<allnotes.size(); i++)
+    for(unsigned int i=0; i<allnotes.size(); i++)
+    {
+        if(allnotes[i].GetTitle()==title)
         {
-            if(allnotes[i].getTitle()==title)
-            {
-                cout<<"Found"<<endl;
-                cout<<"Type in your note"<<endl;
-                cin.ignore();
-                std::getline(cin,text);
-                allnotes[i].setText(text);
-                cout <<"Note edited succesfully"<<endl;
-                return;
-            }
+            cout<<"Found"<<endl;
+            cout<<"Type in your note"<<endl;
+            cin.ignore();
+            std::getline(cin,text);
+            allnotes[i].SetText(text);
+            cout <<"Note edited succesfully"<<endl;
+            return;
         }
+    }
 
-        for(unsigned int i=0; i<allcollections.size(); i++)
-        {
-           allcollections[i].EditNote(title);
-        }
+    for(unsigned int i=0; i<allcollections.size(); i++)
+    {
+        allcollections[i].EditNote(title);
+    }
 }
 
 void Collection::RemoveNote(const string &title)
 {
     for(unsigned int i=0; i<collection.size(); i++)
     {
-        if(collection[i].getTitle()==title)
+        if(collection[i].GetTitle()==title)
         {
             collection.erase(collection.begin() + i);
             cout<<"Note deleted succesfully"<<endl;
@@ -214,19 +213,19 @@ void Collection::Remove(vector <Note> &allnotes, vector <Collection> &allcollect
     cout<<"Type in the title of the note you want to delete"<<endl;
     cin>>title;
 
-        for(unsigned int i=0; i<allnotes.size(); i++)
+    for(unsigned int i=0; i<allnotes.size(); i++)
+    {
+        if(allnotes[i].GetTitle()==title)
         {
-            if(allnotes[i].getTitle()==title)
-            {
-                allnotes.erase(allnotes.begin() + i);
-                cout<<"Note deleted succesfully"<<endl;
-            }
+            allnotes.erase(allnotes.begin() + i);
+            cout<<"Note deleted succesfully"<<endl;
         }
+    }
 
-        for(unsigned int i=0; i<allcollections.size(); i++)
-        {
-           allcollections[i].RemoveNote(title);
-        }
+    for(unsigned int i=0; i<allcollections.size(); i++)
+    {
+        allcollections[i].RemoveNote(title);
+    }
 }
 
 //Observer Methods
@@ -255,3 +254,5 @@ void Collection::Notify(bool editable)
         }
     }
 }
+
+

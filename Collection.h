@@ -1,6 +1,7 @@
-#pragma once
-#include "Subject.h"
+#ifndef OBSERVERNOTES_COLLECTION_H
+#define OBSERVERNOTES_COLLECTION_H
 
+#include "Subject.h"
 #include <algorithm>
 
 using namespace std;
@@ -21,8 +22,8 @@ public:
     virtual ~Collection();
 
     //Getter and Setter
-    void setName(const string &name);
-    string getName()const;
+    void SetName(const string &name);
+    string GetName()const;
 
     //Methods
     void PutInto( vector <Note> &allnotes,  vector <Collection> &allcollections);
@@ -47,3 +48,4 @@ public:
 };
 
 
+#endif //OBSERVERNOTES_COLLECTION_H

@@ -1,29 +1,28 @@
 #include "Note.h"
-
 #include <string>
 
 using namespace std;
 
 //Getter & Setter
-void Note::setText(const string &text)
+void Note::SetText(const string &text)
 {this->text = text;}
 
-void Note::setTitle(const string &title)
+void Note::SetTitle(const string &title)
 {this->title = title;}
 
-void Note::setEditable(const bool &editable)
+void Note::SetEditable(const bool &editable)
 {this->editable = editable;}
 
-string Note::getText()const
+string Note::GetText()const
 {return text;}
 
-string Note::getTitle()const
+string Note::GetTitle()const
 {return title;}
 
-bool Note::getEditable()const
+bool Note::GetEditable()const
 {return editable;}
 
-//C'tor & D'tor
+//C'tor
 Note::Note()
 {
     cout << "Give it a title"<<endl;
@@ -45,9 +44,6 @@ void Note::Update(bool editable)
     this->editable = editable;
     cout << "The state of the Note has changed"<<endl;
 }
-
-
-
 
 
 

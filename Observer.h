@@ -1,4 +1,5 @@
-#pragma once
+#ifndef OBSERVERNOTES_OBSERVER_H
+#define OBSERVERNOTES_OBSERVER_H
 
 class Observer
 {
@@ -8,3 +9,4 @@ protected:
     virtual ~Observer() = default;
 };
 
+#endif //OBSERVERNOTES_OBSERVER_H

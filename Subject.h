@@ -1,4 +1,5 @@
-#pragma once
+#ifndef OBSERVERNOTES_SUBJECT_H
+#define OBSERVERNOTES_SUBJECT_H
 
 #include <vector>
 #include <list>
@@ -17,4 +18,4 @@ protected:
 
 };
 
-
+#endif //OBSERVERNOTES_SUBJECT_H

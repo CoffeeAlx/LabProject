@@ -1,14 +1,13 @@
 #include "gtest/gtest.h"
-#include "gmock/gmock.h"
 #include "../Note.h"
 
 class NoteTest : public ::testing::Test {
 
 protected:
     virtual void SetUp() {
-        note.setText("Hello World");
-        note.setTitle("Test");
-        note.setEditable(0);
+        note.SetText("Hello World");
+        note.SetTitle("Test");
+        note.SetEditable(0);
     }
 
     Note note;
@@ -16,9 +15,9 @@ protected:
 
 TEST_F(NoteTest, Getters) {
 
-    Note note;
-    ASSERT_EQ("Hello World", note.getText());
-    ASSERT_EQ("Test", note.getText());
-    ASSERT_EQ(0, note.getEditable());
+Note note;
+ASSERT_EQ("Hello World", note.GetText());
+ASSERT_EQ("Test", note.GetText());
+ASSERT_EQ(0, note.GetEditable());
 }
 
