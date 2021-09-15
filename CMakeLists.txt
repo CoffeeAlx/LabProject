@@ -1,8 +1,7 @@
-project(Google_Tests)
+cmake_minimum_required(VERSION 3.20)
+project(ObserverNotes)
 
-add_subdirectory(./lib/googletest)
-set(gtest_SOURCE_DIR, ./lib/googletest/include)
-include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
+set(CMAKE_CXX_STANDARD 11)
 
-add_executable(Google_Tests_run NoteTest.cpp CollectionTest.cpp)
-target_link_libraries(Google_Tests_run gtest gtest_main)
+add_executable(ObserverNotes main.cpp Note.cpp Note.h Collection.cpp Collection.h Observer.h Subject.h Google_Tests/CollectionTest.cpp Google_Tests/NoteTest.cpp)
+add_subdirectory(Google_tests)
