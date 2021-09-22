@@ -1,6 +1,4 @@
-#ifndef OBSERVERNOTES_SUBJECT_H
-#define OBSERVERNOTES_SUBJECT_H
-
+#pragma once
 #include <vector>
 #include <list>
 
@@ -17,5 +15,3 @@ protected:
     virtual ~Subject() = default;
 
 };
-
-#endif //OBSERVERNOTES_SUBJECT_H

@@ -1,23 +1,29 @@
+
+#include "Note.h"
 #include "gtest/gtest.h"
-#include "../Note.h"
+
+TEST(Note, ConstructorWorks) {
+    Note note;
+    ASSERT_EQ(note.GetEditable(), false);
+}
+
 
 class NoteTest : public ::testing::Test {
 
-protected:
+public:
     virtual void SetUp() {
-        note.SetText("Hello World");
-        note.SetTitle("Test");
-        note.SetEditable(0);
+        newnote.SetTitle("Hi");
+        newnote.SetText("Unit Testing");
+        newnote.SetEditable(1);
     }
 
-    Note note;
+    Note newnote;
 };
 
-TEST_F(NoteTest, Getters) {
+TEST_F(NoteTest, Getter) {
 
-Note note;
-ASSERT_EQ("Hello World", note.GetText());
-ASSERT_EQ("Test", note.GetText());
-ASSERT_EQ(0, note.GetEditable());
+  ASSERT_EQ("Hi", newnote.GetTitle());
+  ASSERT_EQ("Unit Testing", newnote.GetText());
+  ASSERT_EQ(1, newnote.GetEditable());
 }
 

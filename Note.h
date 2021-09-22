@@ -1,5 +1,4 @@
-#ifndef OBSERVERNOTES_NOTE_H
-#define OBSERVERNOTES_NOTE_H
+#pragma once
 
 #include <iostream>
 #include <string>
@@ -20,6 +19,7 @@ class Note : Observer
 public:
     //C'tor & D'tor
     Note();
+    Note(const string& title, const string& text);
     virtual ~Note();
 
     //Getter & Setter
@@ -35,4 +35,4 @@ public:
 };
 
 
-#endif //OBSERVERNOTES_NOTE_H
+

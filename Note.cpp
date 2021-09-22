@@ -1,4 +1,5 @@
 #include "Note.h"
+
 #include <string>
 
 using namespace std;
@@ -37,6 +38,12 @@ Note::Note()
 
 Note::~Note(){}
 
+Note::Note(const string& title, const string& text)
+{
+    this->title = title;
+    this->text = text;
+}
+
 //Observer
 
 void Note::Update(bool editable)
@@ -44,7 +51,5 @@ void Note::Update(bool editable)
     this->editable = editable;
     cout << "The state of the Note has changed"<<endl;
 }
-
-
 
 

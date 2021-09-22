@@ -1,3 +1,4 @@
+
 #include "Collection.h"
 using namespace std;
 
@@ -109,11 +110,11 @@ void Collection::PrintNotes() const
     int sum=0;
     for (unsigned int i = 0; i < collection.size(); i++)
     {
-        if(collection[i].GetEditable()==1)
+        if(collection[i].GetEditable()==0)
             sum++;
     }
 
-    cout <<"There are " <<collection.size()<< " notes in this collection"<<endl;
+    cout <<"There is/are " <<collection.size()<< " note(s) in this collection"<<endl;
     cout <<"Of these, the modifiable one(s) are(is) "<< sum <<endl;
 
     for (unsigned int i = 0; i < collection.size(); i++)
@@ -126,7 +127,7 @@ void Collection::PrintNotes() const
 
 void Collection::Print(const vector <Note> &allnotes,const vector <Collection> &allcollections)
 {
-    cout<<"There are " << allnotes.size() <<" notes that are not into a collection"<<endl;
+    cout<<"There is/are " << allnotes.size() <<" note(s) that is/are not into a collection"<<endl;
 
     for (unsigned int i = 0; i < allnotes.size(); i++)
     {
@@ -143,27 +144,27 @@ void Collection::Print(const vector <Note> &allnotes,const vector <Collection> &
 
 }
 
-void Collection::EditNote(const string &title)
+string Collection::EditNote(const std::string & title)
 {
-    string text;
-    for(unsigned int i=0; i<collection.size(); i++)
+    std::string text;
+    for (unsigned int i = 0; i < collection.size(); i++)
     {
-        if(collection[i].GetTitle()==title)
+        if (collection[i].GetTitle() == title)
         {
-            if(collection[i].GetEditable())
+            if (collection[i].GetEditable())
             {
-                cout<<"You can't edit this note"<<endl;
-                return;
+                std::cout << "You can't edit this note" << std::endl;
+                return text;
             }
             else
             {
-                cout<<"Found"<<endl;
-                cout<<"Type in your note"<<endl;
-                cin.ignore();
-                std::getline(cin,text);
+                std::cout << "Found" << std::endl;
+                std::cout<<"Type in your note" << std::endl;
+                std::cin.ignore();
+                std::getline(std::cin, text);
                 collection[i].SetText(text);
-                cout <<"Note edited succesfully"<<endl;
-                return;
+                std::cout << "Note edited succesfully" << std::endl;
+                return text;
             }
         }
     }

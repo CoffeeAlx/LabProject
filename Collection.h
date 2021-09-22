@@ -1,6 +1,4 @@
-#ifndef OBSERVERNOTES_COLLECTION_H
-#define OBSERVERNOTES_COLLECTION_H
-
+#pragma once
 #include "Subject.h"
 #include <algorithm>
 
@@ -33,7 +31,7 @@ public:
     void PrintNotes() const;
 
     void Edit( vector <Note> &allnotes,  vector <Collection> &allcollections);
-    void EditNote(const string &title);
+    string EditNote(const string &title);
 
     void Remove( vector <Note> &allnotes, vector <Collection> &allcollections);
     void RemoveNote(const string &title);
@@ -47,5 +45,3 @@ public:
 
 };
 
-
-#endif //OBSERVERNOTES_COLLECTION_H
