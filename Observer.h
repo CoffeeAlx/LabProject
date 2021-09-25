@@ -3,7 +3,7 @@
 class Observer
 {
 public:
-    virtual void Update(bool editable) = 0;
+    virtual void Update() = 0;
 protected:
     virtual ~Observer() = default;
 };

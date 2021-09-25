@@ -20,28 +20,27 @@ public:
     virtual ~Collection();
 
     //Getter and Setter
-    void SetName(const string &name);
     string GetName()const;
 
     //Methods
-    void PutInto( vector <Note> &allnotes,  vector <Collection> &allcollections);
-    bool Add(Note &note);
+    void Move( vector <Note> &allnotes,  vector <Collection> &allcollections);
+    bool Add(Note &note, bool choice);
 
     void Print(const vector <Note> &allnotes,const vector <Collection> &allcollections);
     void PrintNotes() const;
 
     void Edit( vector <Note> &allnotes,  vector <Collection> &allcollections);
-    string EditNote(const string &title);
+    bool EditNote(const string &title, const string &text);
 
     void Remove( vector <Note> &allnotes, vector <Collection> &allcollections);
-    void RemoveNote(const string &title);
+    bool RemoveNote(const string &title);
 
     //Observer Methods
-    void ChangeEditable(bool editable);
+    void ChangeEditable();
 
     virtual void Attach(Note *note) override;
     virtual void Detach(Note *note) override;
-    virtual void Notify(bool editable) override;
+    virtual void Notify() override;
 
 };
 

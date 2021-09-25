@@ -24,14 +24,13 @@ public:
 
     //Getter & Setter
     void SetText(const string &text);
-    void SetTitle(const string &title);
     void SetEditable(const bool &editable);
     string GetText()const;
     bool GetEditable()const;
     string GetTitle()const;
 
     //Observer
-    void Update(bool editable) override;
+    void Update() override;
 };
 
 

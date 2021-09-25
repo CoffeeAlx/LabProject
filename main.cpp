@@ -34,7 +34,7 @@ int main()
                 allcollections.push_back(*collection);
             }break;
             case 3: {
-                pointer->PutInto(allnotes, allcollections);
+                pointer->Move(allnotes, allcollections);
             }break;
             case 4: {
                 pointer->Print(allnotes, allcollections);

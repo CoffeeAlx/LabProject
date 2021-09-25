@@ -8,9 +8,6 @@ using namespace std;
 void Note::SetText(const string &text)
 {this->text = text;}
 
-void Note::SetTitle(const string &title)
-{this->title = title;}
-
 void Note::SetEditable(const bool &editable)
 {this->editable = editable;}
 
@@ -46,9 +43,8 @@ Note::Note(const string& title, const string& text)
 
 //Observer
 
-void Note::Update(bool editable)
+void Note::Update()
 {
-    this->editable = editable;
     cout << "The state of the Note has changed"<<endl;
 }
 
