@@ -8,6 +8,9 @@ using namespace std;
 void Note::SetText(const string &text)
 {this->text = text;}
 
+void Note::SetTitle(const string &title)
+{this->title = title;}
+
 void Note::SetEditable(const bool &editable)
 {this->editable = editable;}
 
@@ -20,9 +23,14 @@ string Note::GetTitle()const
 bool Note::GetEditable()const
 {return editable;}
 
-//C'tor
-Note::Note()
+//C'tor & D'tor
+Note::Note(){}
+
+Note::~Note(){}
+
+Note::Note(const bool& editable)
 {
+    this->editable=editable;
     cout << "Give it a title"<<endl;
     cin >> title;
     this->title = title;
@@ -33,13 +41,6 @@ Note::Note()
     cout<<"Note created succesfully"<<endl;
 }
 
-Note::~Note(){}
-
-Note::Note(const string& title, const string& text)
-{
-    this->title = title;
-    this->text = text;
-}
 
 //Observer
 

@@ -4,13 +4,7 @@ using namespace std;
 
 //C'tor & D'tor
 
-Collection::Collection()
-{
-    cout << "Give it a name"<<endl;
-    cin >> name;
-    this->name = name;
-    cout<<"Collection created succesfully"<<endl;
-}
+Collection::Collection(){}
 
 Collection::Collection(const string &name)
 {

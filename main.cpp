@@ -7,6 +7,7 @@ using namespace std;
 int main()
 {
     int choice;
+    string name;
     Collection * pointer = new Collection("Pointer");
     vector <Note> allnotes;
     vector <Collection> allcollections;
@@ -26,11 +27,13 @@ int main()
         switch(choice)
         {
             case 1: {
-                Note * note = new Note();
+                Note * note = new Note(0);
                 allnotes.push_back(*note);
             }break;
             case 2: {
-                Collection * collection = new Collection();
+                cout << "Give it a name"<<endl;
+                cin >> name;
+                Collection * collection = new Collection(name);
                 allcollections.push_back(*collection);
             }break;
             case 3: {
