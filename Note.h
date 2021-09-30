@@ -2,16 +2,13 @@
 
 #include <iostream>
 #include <string>
-#include <list>
-
 #include "Observer.h"
 
 using namespace std;
 
-class Collection;
-
-class Note : Observer
+class Note
 {
+private:
     string title;
     string text;
     bool editable = false; //editable by deafult
@@ -19,6 +16,7 @@ class Note : Observer
 public:
     //C'tor & D'tor
     Note();
+    Note(const Note &n);
     Note(const bool& editable);
     ~Note();
 
@@ -30,8 +28,6 @@ public:
     bool GetEditable()const;
     string GetTitle()const;
 
-    //Observer
-    void Update() override;
 };
 
 

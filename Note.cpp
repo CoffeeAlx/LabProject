@@ -41,12 +41,12 @@ Note::Note(const bool& editable)
     cout<<"Note created succesfully"<<endl;
 }
 
-
-//Observer
-
-void Note::Update()
+Note::Note(const Note &n)
 {
-    cout << "The state of the Note has changed"<<endl;
+  title = n.title;
+  text = n.text;
+  editable = n.editable;
 }
+
 
 

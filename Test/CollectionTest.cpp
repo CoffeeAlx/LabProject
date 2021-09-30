@@ -42,4 +42,28 @@ TEST_F(CollectionTest, FunctionsWorkingCorrectly) {
 
 }
 
+TEST_F(CollectionTest, MoveNoteWorkingCorrectly) {
+
+    std::vector <Collection> collezioni;
+    
+    Collection c1;
+    Collection c2;
+
+    collezioni.push_back(c1);
+    collezioni.push_back(c2);
+
+    Note note1;
+    note1.SetTitle("Test1");
+   
+    Note note2;
+    note2.SetTitle("Test2");
+   
+    c1.Add(note1, 0);
+    c1.Add(note2, 0);
+
+    Note note3 = collezioni[0].Search("Test2");
+    EXPECT_TRUE(collezioni[1].MoveTo(note3));
+
+}
+
 

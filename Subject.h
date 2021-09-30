@@ -1,17 +1,11 @@
 #pragma once
 #include <vector>
-#include <list>
+#include "Observer.h"
 
-#include "Note.h"
-
-class Subject
-{
-public:
-    std::vector<Note*> obslist;
-    virtual void Attach(Note *note)=0;
-    virtual void Detach(Note *note)=0;
-    virtual void Notify()=0;
-protected:
-    virtual ~Subject() = default;
-
+class Subject {
+ public:
+  virtual ~Subject(){};
+  virtual void Attach(Observer *obs) = 0;
+  virtual void Detach(Observer *obs) = 0;
+  virtual void Notify(bool editable) = 0;
 };

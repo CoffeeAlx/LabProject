@@ -1,5 +1,5 @@
-
 #include "Collection.h"
+#include "Viewer.h"
 using namespace std;
 
 //C'tor & D'tor
@@ -19,7 +19,6 @@ string Collection::GetName()const
 {return name;}
 
 //Methods
-
 bool Collection::Add(Note &note, bool choice)
 {
     if(choice==1)
@@ -32,41 +31,61 @@ bool Collection::Add(Note &note, bool choice)
     {   collection.push_back(note);
         return false;
     }
-
 }
 
-void Collection::Move(vector <Note> &allnotes, vector <Collection> &allcollections)
+bool Collection::Move(vector <Note> &allnotes, vector <Collection> &allcollections)
 {
-    string temp;
+    string title, name;
     bool choice, editable;
 
     cout<<"Type in the title of the note you are looking for"<<endl;
-    cin>>temp;
+    cin>>title;
+    cout<<"Type in the title of the collection you are looking for"<<endl;
+    cin>>name;
     for(unsigned int j=0; j<allnotes.size(); j++)
     {
-        if(allnotes[j].GetTitle()==temp)
+        if(allnotes[j].GetTitle()==title)
         {
             for(unsigned int i=0; i<allcollections.size(); i++)
             {
-                cout<<"Type in the title of the collection you are looking for"<<endl;
-                cin>>temp;
-                if(allcollections[i].GetName()==temp)
+                if(allcollections[i].GetName()==name)
                 {
                     cout<<"Do you want to set the note as NOT editable?"<<endl;
                     cout<<"1 for yes, 0 for no"<<endl;
                     cin>> editable;
                     choice = allcollections[i].Add(allnotes[j], editable);
-                    allcollections[i].Attach(&allnotes[j]);
-                    if(choice){allcollections[i].ChangeEditable();}
                     cout<<"The note has been put into the collection"<<endl;
                     allnotes.erase(allnotes.begin() + j);
+                    if(choice){return 1;}
+                    else{return 0;}
                 }
             }
         }
-
     }
 }
 
+Note Collection::Search(const string &title)
+{
+    Note note;
+    for(unsigned int i = 0; i < collection.size(); i++)
+    {
+        if(collection[i].GetTitle()==title)
+        {
+            note = collection[i];
+            collection.erase(collection.begin() + i);
+            break;
+        }
+    }
+
+    return note;
+}
+
+bool Collection::MoveTo(Note &note)
+{
+    collection.push_back(note);
+    return true;
+
+}
 
 void Collection::PrintNotes() const
 {
@@ -106,8 +125,6 @@ void Collection::Print(const vector <Note> &allnotes,const vector <Collection> &
     }
 
 }
-
-
 
 bool Collection::EditNote(const string&title, const string&text)
 {
@@ -196,23 +213,23 @@ void Collection::Remove(vector <Note> &allnotes, vector <Collection> &allcollect
 
 //Observer Methods
 
-void Collection::ChangeEditable()
+void Collection::ChangeEditable(bool editable)
 {
-    Notify();
+    Notify(editable);
 }
 
-void Collection::Attach(Note *note)
+void Collection::Attach(Observer* obs)
 {
-    obslist.push_back(note);
+    obslist.push_back(obs);
 }
-void Collection::Detach(Note *note)
+void Collection::Detach(Observer* obs)
 {
-    obslist.erase(std::remove(obslist.begin(), obslist.end(), note), obslist.end());
+    obslist.erase(std::remove(obslist.begin(), obslist.end(), obs), obslist.end());
 }
 
-void Collection::Notify()
+void Collection::Notify(bool editable)
 {
-    for(vector<Note*>::const_iterator iter = obslist.begin(); iter != obslist.end(); ++iter)
+    for(vector<Observer*>::const_iterator iter = obslist.begin(); iter != obslist.end(); ++iter)
     {
         if(*iter != 0)
         {

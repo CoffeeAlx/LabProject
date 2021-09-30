@@ -1,14 +1,14 @@
 #pragma once
 #include "Subject.h"
+#include "Note.h"
 #include <algorithm>
 
 using namespace std;
 
-class Note;
-
 class Collection : public Subject
 {
 private:
+    vector<Observer*> obslist;
     string name;
     vector <Note> collection;
 
@@ -23,8 +23,11 @@ public:
     string GetName()const;
 
     //Methods
-    void Move( vector <Note> &allnotes,  vector <Collection> &allcollections);
+    bool Move( vector <Note> &allnotes,  vector <Collection> &allcollections);
     bool Add(Note &note, bool choice);
+
+    Note Search(const string &title);
+    bool MoveTo(Note &note);
 
     void Print(const vector <Note> &allnotes,const vector <Collection> &allcollections);
     void PrintNotes() const;
@@ -36,11 +39,11 @@ public:
     bool RemoveNote(const string &title);
 
     //Observer Methods
-    void ChangeEditable();
+    void ChangeEditable(bool editable);
 
-    virtual void Attach(Note *note) override;
-    virtual void Detach(Note *note) override;
-    virtual void Notify() override;
+    void Attach(Observer *obs)override;
+    void Detach(Observer *obs) override;
+    void Notify(bool editable) override;
 
 };
 
