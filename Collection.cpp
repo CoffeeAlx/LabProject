@@ -33,7 +33,7 @@ bool Collection::Add(Note &note, bool choice)
     }
 }
 
-bool Collection::Move(const string&title, const string&name,const bool &editable, vector <Note> &allnotes, vector <Collection> &allcollections)
+bool Collection::Move(const string&title, const string&name,bool editable, vector <Note> &allnotes, vector <Collection> &allcollections)
 {
     bool choice;
     for(unsigned int j=0; j<allnotes.size(); j++)

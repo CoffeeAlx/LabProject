@@ -66,4 +66,33 @@ TEST_F(CollectionTest, MoveNoteWorkingCorrectly) {
 
 }
 
+TEST_F(CollectionTest, MoveWorkingCorrectly) {
+
+    Collection* pointer = new Collection("Pointer");
+
+    std::vector <Collection> collezioni;
+
+    Collection c1("Random1");
+    Collection c2("Random2");
+
+    collezioni.push_back(c1);
+    collezioni.push_back(c2);
+
+    std::vector <Note> notes;
+
+    Note note1;
+    note1.SetTitle("Test1");
+
+    Note note2;
+    note2.SetTitle("Test2");
+
+    notes.push_back(note1);
+    notes.push_back(note2);
+
+    EXPECT_FALSE(pointer->Move("Test1", "Random1", 0, notes, collezioni));
+    EXPECT_TRUE(pointer->Move("Test2", "Random2", 1, notes, collezioni));
+    EXPECT_FALSE(pointer->Move("Test3", "Random3", 1, notes, collezioni));
+
+}
+
 

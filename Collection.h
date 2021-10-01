@@ -23,7 +23,7 @@ public:
     string GetName()const;
 
     //Methods
-    bool Move(const string&title, const string&name,const bool &editable,vector <Note> &allnotes,vector <Collection> &allcollections);
+    bool Move(const string&title, const string&name,bool editable,vector <Note> &allnotes,vector <Collection> &allcollections);
     bool Add(Note &note, bool choice);
 
     Note Search(const string &title);
