@@ -7,7 +7,7 @@ using namespace std;
 
 int main()
 {
-    int choice;
+    int choice,editable;
     string name, title;
     Collection * pointer = new Collection("Pointer");
     Viewer *observer = new Viewer(*pointer);
@@ -23,7 +23,7 @@ int main()
         cout<<"# 5. Edit a note                   #"<<endl;
         cout<<"# 6. Delete a note                 #"<<endl;
         cout<<"# 7. Move a note in a collection   #"<<endl;
-        cout<<"# 0. Exit                          #"<<endl;
+        cout<<"# 8. Exit                          #"<<endl;
         cout<<"####################################"<<endl;
         cin>>choice;
 
@@ -40,7 +40,14 @@ int main()
                 allcollections.push_back(collection);
             }break;
             case 3: {
-                choice = pointer->Move(allnotes, allcollections);
+                cout<<"Type in the title of the note you are looking for"<<endl;
+                cin>>title;
+                cout<<"Type in the title of the collection you are looking for"<<endl;
+                cin>>name;
+                cout<<"Do you want to set the note as NOT editable?"<<endl;
+                cout<<"1 for yes, 0 for no"<<endl;
+                cin>> editable;
+                choice = pointer->Move(title,name,editable,allnotes, allcollections);
                 if(choice){pointer->ChangeEditable(1);}
             }break;
             case 4: {
@@ -76,12 +83,12 @@ int main()
                     }
                 }
             }break;
-            case 0:{
+            case 8:{
                 delete pointer;
                 delete observer;
                 return 0;}
         }
-    }while(choice!=0);
+    }while(choice!=8);
 
 
 

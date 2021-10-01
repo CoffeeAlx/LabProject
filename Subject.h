@@ -7,5 +7,5 @@ class Subject {
   virtual ~Subject(){};
   virtual void Attach(Observer *obs) = 0;
   virtual void Detach(Observer *obs) = 0;
-  virtual void Notify(bool editable) = 0;
+  virtual void Notify() = 0;
 };

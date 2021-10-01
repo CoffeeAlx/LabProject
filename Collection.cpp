@@ -33,15 +33,9 @@ bool Collection::Add(Note &note, bool choice)
     }
 }
 
-bool Collection::Move(vector <Note> &allnotes, vector <Collection> &allcollections)
+bool Collection::Move(const string&title, const string&name,const bool &editable, vector <Note> &allnotes, vector <Collection> &allcollections)
 {
-    string title, name;
-    bool choice, editable;
-
-    cout<<"Type in the title of the note you are looking for"<<endl;
-    cin>>title;
-    cout<<"Type in the title of the collection you are looking for"<<endl;
-    cin>>name;
+    bool choice;
     for(unsigned int j=0; j<allnotes.size(); j++)
     {
         if(allnotes[j].GetTitle()==title)
@@ -50,9 +44,6 @@ bool Collection::Move(vector <Note> &allnotes, vector <Collection> &allcollectio
             {
                 if(allcollections[i].GetName()==name)
                 {
-                    cout<<"Do you want to set the note as NOT editable?"<<endl;
-                    cout<<"1 for yes, 0 for no"<<endl;
-                    cin>> editable;
                     choice = allcollections[i].Add(allnotes[j], editable);
                     cout<<"The note has been put into the collection"<<endl;
                     allnotes.erase(allnotes.begin() + j);
@@ -62,6 +53,8 @@ bool Collection::Move(vector <Note> &allnotes, vector <Collection> &allcollectio
             }
         }
     }
+
+    return false;
 }
 
 Note Collection::Search(const string &title)
@@ -84,7 +77,6 @@ bool Collection::MoveTo(Note &note)
 {
     collection.push_back(note);
     return true;
-
 }
 
 void Collection::PrintNotes() const
@@ -215,7 +207,7 @@ void Collection::Remove(vector <Note> &allnotes, vector <Collection> &allcollect
 
 void Collection::ChangeEditable(bool editable)
 {
-    Notify(editable);
+    Notify();
 }
 
 void Collection::Attach(Observer* obs)
@@ -227,7 +219,7 @@ void Collection::Detach(Observer* obs)
     obslist.erase(std::remove(obslist.begin(), obslist.end(), obs), obslist.end());
 }
 
-void Collection::Notify(bool editable)
+void Collection::Notify()
 {
     for(vector<Observer*>::const_iterator iter = obslist.begin(); iter != obslist.end(); ++iter)
     {
